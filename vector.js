@@ -65,6 +65,10 @@ export default class Vector {
     return this.create(this._x * scalar, this._y * scalar);
   }
 
+  divide(scalar) {
+    return this.create(this._x / scalar, this._y / scalar);
+  }
+
   norm() {
     let length = this.getLength();
     this._x /= length;
