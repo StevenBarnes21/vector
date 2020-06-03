@@ -26,6 +26,10 @@ export default class Vector {
     return Math.atan2(this._y, this._x);
   }
 
+  getAngleDegrees() {
+    return this.getAngle() * 180 / Math.PI;
+  }
+
   setAngle(angle) {
     let length = this.getLength();
     this._x = Math.cos(angle) * length;
@@ -40,6 +44,31 @@ export default class Vector {
     let angle = this.getAngle();
     this._x = Math.cos(angle) * length;
     this._y = Math.sin(angle) * length;
+  }
+
+  create(x,y) {
+    let v = new Vector();
+    v.setX(x);
+    v.setY(y);
+    return v;
+  }
+
+  add(vec) {
+    return this.create(this._x + vec.getX(), this._y + vec.getY());
+  }
+
+  sub(vec) {
+    return this.create(this._x - vec.getX(), this._y - vec.getY());
+  }
+
+  multiply(scalar) {
+    return this.create(this._x * scalar, this._y * scalar);
+  }
+
+  norm() {
+    let length = this.getLength();
+    this._x /= length;
+    this._y /= length;
   }
 }
 
